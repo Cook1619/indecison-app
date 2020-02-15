@@ -3,7 +3,7 @@ console.log("App.js is running!");
 // JSX - JavaScript XML
 const app = {
   title: "Indecision App",
-  subtitle: "My first React App!!",
+  subtitle: "A List of items needed",
   options: []
 };
 
@@ -17,6 +17,14 @@ const onFormSubmit = e => {
   }
 };
 
+const onRemoveAll = () => {
+    app.options = []
+    renderApp()
+}
+
+const appRoot = document.getElementById("app");
+
+
 const renderApp = () => {
   const template = (
     <div>
@@ -24,9 +32,13 @@ const renderApp = () => {
       {app.subtitle && <p>{app.subtitle}</p>}
       <p>{app.options.length > 0 ? "Here are your options" : "No options"}</p>
       <p>{app.options.length}</p>
+      <button onClick={onRemoveAll}>Remove All</button>
       <ol>
-        <li>Option 1</li>
-        <li>Option 2</li>
+        {
+            app.options.map((option, index) => {
+                return <li key={index}>{option}</li>
+            })
+        }
       </ol>
       <form onSubmit={onFormSubmit}>
         <input type="text" name="option" />
@@ -36,7 +48,5 @@ const renderApp = () => {
   );
   ReactDOM.render(template, appRoot);
 };
-
-const appRoot = document.getElementById("app");
 
 renderApp();
