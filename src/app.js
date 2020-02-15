@@ -1,53 +1,42 @@
 console.log("App.js is running!");
 
 // JSX - JavaScript XML
-const info = {
+const app = {
   title: "Indecision App",
   subtitle: "My first React App!!",
-  options: ["One", "Two"]
+  options: []
 };
 
-const template = (
-  <div>
-    <h1>{info.title}</h1>
-    {info.subtitle && <p>{info.subtitle}</p>}
-    {info.options && info.options.length > 0 ? (
-      <p>Here are your options</p>
-    ) : (
-      <p>No options</p>
-    )}
-  </div>
-);
+const onFormSubmit = e => {
+  e.preventDefault();
+  const option = e.target.elements.option.value;
+  if (option) {
+    app.options.push(option);
+    e.target.elements.option.value = "";
+    renderApp()
+  }
+};
 
-let count = 0;
-const addOne = () => {
-  count++;
-  renderCounterApp();
-  console.log("testing");
-};
-const minusOne = () => {
-    count--
-    renderCounterApp();
-  console.log("minusOne");
-};
-const reset = () => {
-    count = 0
-    renderCounterApp();
-  console.log("reset");
+const renderApp = () => {
+  const template = (
+    <div>
+      <h1>{app.title}</h1>
+      {app.subtitle && <p>{app.subtitle}</p>}
+      <p>{app.options.length > 0 ? "Here are your options" : "No options"}</p>
+      <p>{app.options.length}</p>
+      <ol>
+        <li>Option 1</li>
+        <li>Option 2</li>
+      </ol>
+      <form onSubmit={onFormSubmit}>
+        <input type="text" name="option" />
+        <button>Add Option</button>
+      </form>
+    </div>
+  );
+  ReactDOM.render(template, appRoot);
 };
 
 const appRoot = document.getElementById("app");
 
-const renderCounterApp = () => {
-  const template2 = (
-    <div>
-      <h1>Count: {count}</h1>
-      <button onClick={addOne}>+1</button>
-      <button onClick={minusOne}>-1</button>
-      <button onClick={reset}>reset</button>
-    </div>
-  );
-  ReactDOM.render(template2, appRoot);
-};
-
-renderCounterApp();
+renderApp();
