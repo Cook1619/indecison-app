@@ -11,11 +11,41 @@ class Person {
         return `${this.name} is ${this.age} years old!`
     }
 }
+// class Student extends Person{
+//     constructor(name, age, major){
+//         super(name, age)
+//         this.major = major
+//     }
+//     hasMajor(){
+//         return !!this.major;
+//     }
+//     getDescription(){
+//         let description = super.getDescription()
+//         if (this.hasMajor()) {
+//             description = description += `Their major is ${this.major}`
+//         }
+//         return description
+//     }
+// }
 
-const me = new Person('Tim', 30);
+class Traveler extends Person {
+    constructor(name , age, location){
+        super(name, age)
+        this.location = location
+    }
+    getGreeting(){
+        let greeting = super.getGreeting()
+        if (this.location){
+            greeting = greeting += `I'm visiting from ${this.location}`
+        }
+        return greeting
+    }
+}
 
-console.log(me.getGreeting(), me.getDescription())
+const me = new Traveler('Tim', 30, 'Mayer');
 
-const other =  new Person('Bill', 23);
+console.log(me.getGreeting())
 
-console.log(other.getGreeting(), other.getDescription())
+const other =  new Traveler('Bill', 23);
+
+console.log(other.getGreeting())
