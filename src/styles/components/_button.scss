@@ -18,7 +18,7 @@
 //Button
 
 .button {
-    background-color: $purple;
+    background: $purple;
     border: none;
     border-bottom: .3rem solid darken($purple, 10%);
     color: white;
@@ -27,7 +27,7 @@
 }
 
 .button--link {
-    background-image: none;
+    background: none;
     border: none;
     color: $off-white;
     padding: 0;
