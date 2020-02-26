@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     padding: $l-size $m-size;
-    border-bottom: 1px solid lightness($light-blue, 10%);
+    border-bottom: 1px solid lighten($light-blue, 10%);
 }
 
 .option__text {
@@ -10,4 +10,5 @@
     font-weight: 500;
     font-size: 2rem;
     margin: 0;
+    word-break: break-all;
 }
