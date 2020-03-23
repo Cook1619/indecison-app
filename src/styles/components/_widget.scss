@@ -1,7 +1,7 @@
 //Widget
 
 .widget {
-    background-color: $light-blue;
+    background-color: $grey-black;
     margin-bottom: $xl-size;
 }
 
@@ -10,7 +10,7 @@
     margin: 0;
     padding: $l-size;
     text-align: center;
-    border-bottom: 1px solid lighten($light-blue, 10%);
+    border-bottom: 1px solid lighten($grey-black, 10%);
 }
 
 

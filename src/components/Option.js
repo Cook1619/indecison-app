@@ -1,4 +1,5 @@
 import React from 'react';
+import { MdClose } from 'react-icons/md';
 
 const Option = (props) => (
     <div className="option">
@@ -8,7 +9,7 @@ const Option = (props) => (
           props.handleDeleteOption(props.optionText);
         }}
       >
-        remove
+        <MdClose size={32}/>
       </button>
     </div>
   );
